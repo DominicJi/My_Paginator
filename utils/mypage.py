@@ -61,6 +61,10 @@ class Page:
             page_end = self.current_page + self.half_show_page_num
         self.page_start = page_start
         self.page_end = page_end
+        #上面的一通计算得到的页面显示的页码结束
+        #如果计算得到的页码数比我总共的页码数还多，我就把页码结束指定成我总共有的页码数
+        if self.page_end>self.total_page:
+            self.page_end=self.total_page
 
 
     @property
