@@ -76,6 +76,11 @@ class Page:
     def page_html(self):
         li_list = []
         # 添加首页
+        #添加前面的nav和ul标签
+        li_list.append('''
+            <nav aria-label='Page navigation>'
+            <ul class='pagination'>
+        ''')
         li_list.append('<li><a href="/{}/?page=1">首页</a></li>'.format(self.url_prefix))
         # 添加上一页
         if self.current_page <= 1:  # 没有上一页
@@ -99,6 +104,11 @@ class Page:
         li_list.append(next_html)
         # 添加尾页
         li_list.append('<li><a href="/{}/?page={}">尾页</a></li>'.format(self.url_prefix, self.total_page))
+        # 尾部添加标签
+        li_list.append('''
+                            </nav>
+                            </ul>
+                        ''')
         # 将生成的li标签 拼接成一个大的字符串
         page_html = "".join(li_list)
         return page_html
